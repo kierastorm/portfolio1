@@ -25,6 +25,10 @@ h1.typewriter {
 }
 
 
+h1.carousel{
+
+}
+
 html,body {
   font-family: 'Raleway', sans-serif;
   padding: 1em 2em;
@@ -33,12 +37,8 @@ html,body {
   color: #aaa
 }
 
-h1,h2 {
+h1 {
   font-weight: 200;
   margin: 0.4em 0;
 }
 h1 { font-size: 3.5em; }
-h2 {
-  color: #888;
-  font-size: 2em;
-}

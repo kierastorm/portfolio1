@@ -16,7 +16,12 @@
     <section id="banner" class="major">
         <div class="inner">
             <header class="major">
-                <h1 class="typewriter">{{ page.landing-title }}</h1>
+                <h1 class="typewriter">{{ page.landing-title }}
+                  <span class="txt-rotate"
+                        data-period="2000"
+                        data-rotate='[ "nerdy.", "simple.", "pure JS.", "pretty.", "fun!" ]'>
+                  </span>
+                </h1>
             </header>
             <div class="content">
                 <p style="text-transform: uppercase;">{{ site.description }}</p>
@@ -49,7 +54,6 @@
     </div>
 
     {% include footer.html %}
-
 </body>
 
 </html>

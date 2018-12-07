@@ -34,46 +34,46 @@
 <!-- Menu -->
 <nav id="menu">
 	<ul class="links">
-
-
-
-
-
-
-
-
-
-
+        
+		    
+		
+		    
+		
+		    
+		
+		    
+		
+		    
 		        <li><a href="http://localhost:4000/forty-jekyll-theme/">Home</a></li>
-
-
-
-
-
-
-
-
-
-
+	    	
+		
+		    
+		
+		    
+		
+		
+		    
+		
+		    
 		        <li><a href="http://localhost:4000/forty-jekyll-theme/all_posts.html">All posts</a></li>
-
-
-
+		    
+		
+		    
 		        <li><a href="http://localhost:4000/forty-jekyll-theme/elements.html">Elements</a></li>
-
-
-
+		    
+		
+		    
 		        <li><a href="http://localhost:4000/forty-jekyll-theme/generic.html">Generic</a></li>
-
-
-
-
-
+		    
+		
+		    
+		
+		    
 		        <li><a href="http://localhost:4000/forty-jekyll-theme/landing.html">Landing</a></li>
-
-
-
-
+		    
+		
+		    
+		
 	</ul>
 
 </nav>
@@ -84,12 +84,12 @@
         <div class="inner">
             <header class="major">
                 <h1 class="typewriter">Hi, my name is Storm
-											<span
-											class="txt-rotate"
-											data-period="2000"
-											data-rotate='[ "nerdy.", "simple.", "pure JS.", "pretty.", "fun!" ]'></span>
-											</h1>
-
+                  <span class="txt-rotate"
+                        data-period="2000"
+                        data-rotate='[ "nerdy.", "simple.", "pure JS.", "pretty.", "fun!" ]'>
+                  </span>
+                </h1>
+            </header>
             <div class="content">
                 <p style="text-transform: uppercase;">Hopefully a rad portfolio <br /> and released under the Creative Commons.</p>
                 <ul class="actions">
@@ -104,37 +104,37 @@
 
         <!-- One -->
         <section id="one" class="tiles">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <article>
     <span class="image">
-      <img src="" alt="" />
+      <img src="assets/images/pic01.jpg" alt="" />
     </span>
     <header class="major">
       <h3><a href="/forty-jekyll-theme/elements.html" class="link">Elements</a></h3>
       <p></p>
     </header>
   </article>
-
-
-
+  
+  
+  
   <article>
     <span class="image">
       <img src="assets/images/pic11.jpg" alt="" />
@@ -144,11 +144,11 @@
       <p>Lorem ipsum dolor est</p>
     </header>
   </article>
-
-
-
-
-
+  
+  
+  
+  
+  
   <article>
     <span class="image">
       <img src="assets/images/pic07.jpg" alt="" />
@@ -158,8 +158,8 @@
       <p>Lorem ipsum dolor sit amet nullam consequa<br />sed veroeros. tempus adipiscing nulla.</p>
     </header>
   </article>
-
-
+  
+  
 </section>
 
 
@@ -220,13 +220,13 @@
 			<section>
 				<div class="contact-method">
 
-
-
-
-
-
+					
+					
+					
+					
+					
 					    United States of America
-
+					
 					</span>
 				</div>
 			</section>
@@ -238,26 +238,26 @@
 	<footer id="footer">
 		<div class="inner">
 			<ul class="icons">
-
+				
 				<li><a href="https://twitter.com/andrewbanchich" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-
-
+				
+				
 				<li><a href="https://plus.google.com/u/0/" class="icon alt fa-google-plus" target="_blank"><span class="label">Google+</span></a></li>
-
-
-
+				
+				
+				
 				<li><a href="https://instagram.com" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
-
-
-
-
+				
+				
+				
+				
 				<li><a href="https://gitlab.com/u/" class="icon alt fa-gitlab" target="_blank"><span class="label">GitLab</span></a></li>
-
-
-
-
+				
+				
+				
+				
 				<li><a href="https://www.linkedin.com/in/" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-
+				
 			</ul>
 			<ul class="copyright">
 				<li>&copy; Above Average Portfolio by Storm Cornelius</li>
@@ -278,7 +278,65 @@
 	<script src="http://localhost:4000/forty-jekyll-theme/assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="http://localhost:4000/forty-jekyll-theme/assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="http://localhost:4000/forty-jekyll-theme/assets/js/main.js"></script>
+	<!--runs animation carousel-->
+	<script>
+	var TxtRotate = function(el, toRotate, period) {
+	  this.toRotate = toRotate;
+	  this.el = el;
+	  this.loopNum = 0;
+	  this.period = parseInt(period, 10) || 2000;
+	  this.txt = '';
+	  this.tick();
+	  this.isDeleting = false;
+	};
 
+	TxtRotate.prototype.tick = function() {
+	  var i = this.loopNum % this.toRotate.length;
+	  var fullTxt = this.toRotate[i];
+
+	  if (this.isDeleting) {
+	    this.txt = fullTxt.substring(0, this.txt.length - 1);
+	  } else {
+	    this.txt = fullTxt.substring(0, this.txt.length + 1);
+	  }
+
+	  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+	  var that = this;
+	  var delta = 300 - Math.random() * 100;
+
+	  if (this.isDeleting) { delta /= 2; }
+
+	  if (!this.isDeleting && this.txt === fullTxt) {
+	    delta = this.period;
+	    this.isDeleting = true;
+	  } else if (this.isDeleting && this.txt === '') {
+	    this.isDeleting = false;
+	    this.loopNum++;
+	    delta = 500;
+	  }
+
+	  setTimeout(function() {
+	    that.tick();
+	  }, delta);
+	};
+
+	window.onload = function() {
+	  var elements = document.getElementsByClassName('txt-rotate');
+	  for (var i=0; i<elements.length; i++) {
+	    var toRotate = elements[i].getAttribute('data-rotate');
+	    var period = elements[i].getAttribute('data-period');
+	    if (toRotate) {
+	      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+	    }
+	  }
+	  // INJECT CSS
+	  var css = document.createElement("style");
+	  css.type = "text/css";
+	  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+	  document.body.appendChild(css);
+	};
+	</script>
 
 </body>
 

@@ -77,7 +77,20 @@
 	</ul>
 
 </nav>
- <!-- Main -->
+
+
+
+<!-- Main -->
+<div id="main" class="alt">
+
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h1>Elements</h1>
+		</header>
+		<span class="image main"><img src="/assets/images/pic01.jpg" alt="" /></span>
+		<p><!-- Main -->
 <div id="main" class="alt">
 
 <!-- One -->
@@ -89,6 +102,7 @@
 
 <!-- Content -->
 <h2 id="content">Sample Content</h2>
+<img src="assets/images/pic01.jpg" />
 <p>Praesent ac adipiscing ullamcorper semper ut amet ac risus. Lorem sapien ut odio odio nunc. Ac adipiscing nibh porttitor erat risus justo adipiscing adipiscing amet placerat accumsan. Vis. Faucibus odio magna tempus adipiscing a non. In mi primis arcu ut non accumsan vivamus ac blandit adipiscing adipiscing arcu metus praesent turpis eu ac lacinia nunc ac commodo gravida adipiscing eget accumsan ac nunc adipiscing adipiscing.</p>
 <div class="row">
 	<div class="6u 12u$(small)">
@@ -481,7 +495,13 @@ print 'It took ' + i + ' iterations to sort the deck.';
 </section>
 
 </div>
- <!-- Contact -->
+</p>
+	</div>
+</section>
+
+</div>
+
+    <!-- Contact -->
 <section id="contact">
 	<div class="inner">
 		<section>
@@ -521,7 +541,7 @@ print 'It took ' + i + ' iterations to sort the deck.';
 			</section>
 			<section>
 				<div class="contact-method">
-					
+
 					
 					
 					
@@ -580,6 +600,65 @@ print 'It took ' + i + ' iterations to sort the deck.';
 	<script src="http://localhost:4000/forty-jekyll-theme/assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="http://localhost:4000/forty-jekyll-theme/assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="http://localhost:4000/forty-jekyll-theme/assets/js/main.js"></script>
+	<!--runs animation carousel-->
+	<script>
+	var TxtRotate = function(el, toRotate, period) {
+	  this.toRotate = toRotate;
+	  this.el = el;
+	  this.loopNum = 0;
+	  this.period = parseInt(period, 10) || 2000;
+	  this.txt = '';
+	  this.tick();
+	  this.isDeleting = false;
+	};
+
+	TxtRotate.prototype.tick = function() {
+	  var i = this.loopNum % this.toRotate.length;
+	  var fullTxt = this.toRotate[i];
+
+	  if (this.isDeleting) {
+	    this.txt = fullTxt.substring(0, this.txt.length - 1);
+	  } else {
+	    this.txt = fullTxt.substring(0, this.txt.length + 1);
+	  }
+
+	  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+	  var that = this;
+	  var delta = 300 - Math.random() * 100;
+
+	  if (this.isDeleting) { delta /= 2; }
+
+	  if (!this.isDeleting && this.txt === fullTxt) {
+	    delta = this.period;
+	    this.isDeleting = true;
+	  } else if (this.isDeleting && this.txt === '') {
+	    this.isDeleting = false;
+	    this.loopNum++;
+	    delta = 500;
+	  }
+
+	  setTimeout(function() {
+	    that.tick();
+	  }, delta);
+	};
+
+	window.onload = function() {
+	  var elements = document.getElementsByClassName('txt-rotate');
+	  for (var i=0; i<elements.length; i++) {
+	    var toRotate = elements[i].getAttribute('data-rotate');
+	    var period = elements[i].getAttribute('data-period');
+	    if (toRotate) {
+	      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+	    }
+	  }
+	  // INJECT CSS
+	  var css = document.createElement("style");
+	  css.type = "text/css";
+	  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+	  document.body.appendChild(css);
+	};
+	</script>
 
 
 </body>
