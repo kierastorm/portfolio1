@@ -9,7 +9,7 @@ h1.typewriter {
   letter-spacing: .15em; /* Adjust as needed */
   animation:
     typing 3.5s steps(30, end),
-    blink-caret .5s step-end infinite;
+    blink-caret .5s step-end 5;
 }
 
 /* The typing effect */

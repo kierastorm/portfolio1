@@ -2,7 +2,7 @@
 title: Above Average Portfolio
 subtitle: by Storm Cornelius
 email: cornelks@clarkson.edu
-description: Hopefully a rad portfolio <br /> and released under the Creative Commons.
+description: Hopefully a rad portfolio 
 baseurl: "/forty-jekyll-theme" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author:
@@ -15,16 +15,8 @@ tiles-source: pages # accepts "posts" or "pages"
 tiles-count: 6
 
 # social settings
-500px_url:
-facebook_url:
-github_url:
 gitlab_url: https://gitlab.com/u/
-googleplus_url: https://plus.google.com/u/0/
-instagram_url: https://instagram.com
 linkedin_url: https://www.linkedin.com/in/
-pinterest_url:
-slack_url:
-twitter_url: https://twitter.com/andrewbanchich
 
 # build settings
 markdown: kramdown
